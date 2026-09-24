@@ -91,7 +91,7 @@ threshold, and the results are visible and auditable.
 
 ## Architecture
 
-![Pipeline Architecture](reports/figures/architecture_animated.gif)
+<img src="reports/figures/architecture_animated.gif" width="850">
 
 Data flows in one direction, start to finish: public CMS data is loaded and cleaned, growth and
 forecasting analysis run on top of it, prior-authorization and payer data are layered in, and every
@@ -102,53 +102,82 @@ the way.
 
 ## Dashboard
 
-### Executive Overview
-A single-page summary of the most important numbers: current enrollment, growth rate, the best-performing
-forecast model, and the top opportunity markets.
+<table>
+<tr>
+<td width="50%">
 
-![Executive Overview](docs/assets/screenshots/01_overview.png)
+**Executive Overview**
+A single-page summary of the most important numbers: current enrollment, growth rate, the
+best-performing forecast model, and the top opportunity markets.
 
-### Enrollment Forecast
-Shows the enrollment trend and compares forecasting models against each other and against a simple
-baseline, so the chosen model's reliability is visible, not assumed.
+<img src="docs/assets/screenshots/01_overview.png" width="100%">
 
-![Enrollment Forecast](docs/assets/screenshots/02_forecast.png)
+</td>
+<td width="50%">
 
-### Hierarchical Forecast
-Breaks the national forecast down to the state and county level, clearly marking which regions' forecasts
-are reliable (green) versus directional only (red).
+**Enrollment Forecast**
+Shows the enrollment trend and compares forecasting models against each other and against a
+simple baseline, so the chosen model's reliability is visible, not assumed.
 
-![Hierarchical Forecast](docs/assets/screenshots/03_hierarchical.png)
+<img src="docs/assets/screenshots/02_forecast.png" width="100%">
 
-### Growth Opportunity
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Hierarchical Forecast**
+Breaks the national forecast down to the state and county level, clearly marking which regions'
+forecasts are reliable (green) versus directional only (red).
+
+<img src="docs/assets/screenshots/03_hierarchical.png" width="100%">
+
+</td>
+<td width="50%">
+
+**Growth Opportunity**
 An interactive map and ranking of every state and county by growth opportunity, with the scoring
 methodology stress-tested for stability.
 
-![Growth Opportunity](docs/assets/screenshots/04_growth.png)
+<img src="docs/assets/screenshots/04_growth.png" width="100%">
 
-### Payer Scorecard
-Ranks insurance payers by growth, member scale, and prior-authorization burden -- the top candidates for
-outreach and partnership.
+</td>
+</tr>
+<tr>
+<td width="50%">
 
-![Payer Scorecard](docs/assets/screenshots/05_payer.png)
+**Payer Scorecard**
+Ranks insurance payers by growth, member scale, and prior-authorization burden -- the top
+candidates for outreach and partnership.
 
-### PA Exposure
-Shows how many health plan members fall into low, medium, and high prior-authorization exposure, weighted
-by actual enrollment, not just plan counts.
+<img src="docs/assets/screenshots/05_payer.png" width="100%">
 
-![PA Exposure](docs/assets/screenshots/06_pa.png)
+</td>
+<td width="50%">
 
-### Proxy Revenue
-Converts the enrollment forecast into a clearly labeled revenue estimate range, with the underlying
-assumption stated in plain language.
+**PA Exposure**
+Shows how many health plan members fall into low, medium, and high prior-authorization exposure,
+weighted by actual enrollment, not just plan counts.
 
-![Proxy Revenue](docs/assets/screenshots/07_revenue.png)
+<img src="docs/assets/screenshots/06_pa.png" width="100%">
 
-### Validation
-Every automated check behind this platform, shown with its real result -- full transparency into how the
-numbers were verified.
+</td>
+</tr>
+<tr>
+<td width="50%">
 
-![Validation](docs/assets/screenshots/08_validation.png)
+**Proxy Revenue**
+Converts the enrollment forecast into a clearly labeled revenue estimate range, with the
+underlying assumption stated in plain language.
+
+<img src="docs/assets/screenshots/07_revenue.png" width="100%">
+
+</td>
+<td width="50%">
+
+</td>
+</tr>
+</table>
 
 ---
 
