@@ -1,113 +1,164 @@
-# RCM Opportunity Forecasting & Prior Authorization Intelligence
-![Workflow Diagram](Workflow.png)
-## Overview
-
-**RCM Opportunity Forecasting & Prior Authorization Intelligence** is a public CMS-data analytics system designed for Revenue Cycle Management (RCM) teams.
-
-The system analyzes Medicare Advantage enrollment trends, forecasts 90-day enrollment opportunities, identifies prior authorization exposure, evaluates authorization timing exposure, and highlights Medicare Advantage growth opportunities.
-
-The project uses publicly available CMS Medicare Advantage enrollment, penetration, plan, and prior-authorization benefit data. It does not use PHI, synthetic denial labels, or PMPM revenue assumptions.
-
----
+﻿# RCM Opportunity Forecasting & Prior Authorization Intelligence
 
 ## Aim
 
-- Forecast Medicare Advantage enrollment opportunities for the next 90 days
-- Identify enrollment growth opportunities across states, counties, and plans
-- Analyze prior authorization exposure using CMS benefit data
-- Identify potential authorization timing exposure
-- Provide actionable intelligence for RCM teams
-- Present results through an interactive dashboard
+To turn public Medicare Advantage enrollment data into clear, actionable business intelligence for
+Revenue Cycle Management (RCM) teams -- showing where enrollment is growing, which insurance payers to
+prioritize, where prior-authorization workload is concentrated, and what that growth is worth in dollars.
 
 ---
 
-## Key Features
+## Overview
 
-- **90-Day Enrollment Forecast** — Forecasts near-term Medicare Advantage enrollment opportunities
-- **Growth Opportunity Analysis** — Identifies growing states, counties, plan types, and plans
-- **Prior Authorization Intelligence** — Identifies plans with higher prior authorization exposure
-- **Authorization Timing Analysis** — Flags potential timing exposure using CMS timing guardrails
-- **Plan Intelligence** — Provides plan-level Medicare Advantage insights
-- **Data Validation** — Includes validation and data-quality checks
-- **Interactive Dashboard** — Presents insights through a Streamlit dashboard
+This platform analyzes publicly available Medicare Advantage enrollment data covering over 36 million
+members across all 50 states and thousands of counties. It answers four practical business questions:
 
----
+1. **Where is enrollment growing fastest, and where is the untapped opportunity?**
+2. **Which insurance payers are growing quickly and worth prioritizing for outreach?**
+3. **Where is prior-authorization workload concentrated, so teams can plan capacity?**
+4. **What is that enrollment growth worth in revenue terms?**
 
-## Benefits
-
-- **Reduces Manual Analysis** — Converts large public CMS datasets into usable insights
-- **Supports RCM Strategy** — Helps teams identify potential areas for outreach and prioritization
-- **Improves Prioritization** — Highlights plans and markets requiring further attention
-- **Provides Early Signals** — Uses enrollment trends to identify emerging opportunities
-- **Data-Driven Decisions** — Supports strategic decisions using measurable CMS data
-- **Transparent Analysis** — Clearly separates public-data evidence from unsupported revenue or denial claims
+Every number shown is backed by a validation check, and every limitation of the underlying public data is
+stated openly rather than hidden behind a confident-looking chart.
 
 ---
 
-## Workflow
+## Problem Statement
 
-The system follows this overall process:
-
-**CMS Public Data → Data Processing → EDA & Validation → Enrollment Forecasting → Prior Authorization Analysis → Authorization Timing Analysis → Growth Opportunity Analysis → Streamlit Dashboard**
-
-### Workflow Steps
-
-**1. CMS Data Collection**  
-Public Medicare Advantage enrollment, plan, penetration, and benefit data is collected from CMS.
-
-**2. Data Processing**  
-The collected data is cleaned, standardized, and prepared for analysis.
-
-**3. EDA & Validation**  
-Enrollment trends, geographic patterns, plan information, missing values, and data quality are analyzed.
-
-**4. Enrollment Forecasting**  
-Historical Medicare Advantage enrollment is analyzed to generate a **90-day enrollment forecast**.
-
-**5. Prior Authorization Analysis**  
-CMS benefit fields are analyzed to identify plans with higher prior authorization exposure and generate prioritization insights.
-
-**6. Authorization Timing Analysis**  
-Plans are evaluated against CMS authorization timing guardrails to identify potential timing exposure.
-
-**7. Growth Opportunity Analysis**  
-Medicare Advantage growth is analyzed across states, counties, plan types, and plans to identify potential opportunities.
-
-**8. Dashboard**  
-The final analytics are presented through an interactive **Streamlit executive dashboard**.
+RCM and business development teams need to know where to focus their limited time and resources: which
+states and counties are growing, which insurance payers are the best partners to pursue, and where
+administrative workload (like prior authorization) is likely to be heaviest. Public government data holds
+the answers, but it is large, partly hidden (some rows are suppressed for privacy), and easy to
+misinterpret if not handled carefully. Teams need this turned into a single, trustworthy, easy-to-read
+platform -- not a spreadsheet full of gaps and guesswork.
 
 ---
 
-## Current Results
+## Problems Found and Solutions
 
-- CMS enrollment data covers **January 2024 through May 2026**
-- National observed Medicare Advantage enrollment increased from approximately **33.48M to 36.08M**
-- Forecast target: **observed enrollment**
-- Forecast horizon: **90 days**
-- Best-performing holdout model: **Linear Drift**
-- Holdout MAPE: approximately **0.048%**
-- Prior authorization analysis is based on **CMS PBP benefit fields**
-- Authorization timing analysis uses **CMS timing guardrails**
+A structured review of the original version of this project found several issues that could have led to
+misleading business decisions. Each was identified and corrected:
+
+**Hidden data was silently treated as zero.** Government privacy rules hide roughly half of the raw data
+rows. The original version ignored this, understating real enrollment. **Solution:** every enrollment
+figure is now shown as an honest range (low to high), so no one mistakes a partial count for the full
+picture.
+
+**The forecast's accuracy claim was based on a single lucky test.** A forecast was judged reliable from
+one snapshot in time, which can be misleading. **Solution:** the forecast is now tested 15 separate times
+across different time windows and compared against a simple baseline every time, so its reliability is
+proven, not assumed.
+
+**Two features were accidentally the same thing under different names**, one meant to represent
+authorization delays, which risked confusing users. **Solution:** removed the duplicate and replaced it
+with a properly built, member-weighted exposure score.
+
+**The market-opportunity scoring rewarded the wrong markets** -- it favored places that were already
+saturated instead of places with room to grow. **Solution:** the scoring logic was corrected to reward
+markets with real growth headroom, and the new ranking was stress-tested against alternate scoring
+weights to confirm it holds up.
+
+**The project could not be reliably rebuilt from scratch** -- a key step only existed in someone's personal
+notebook. **Solution:** the entire pipeline now runs end-to-end with a single command, and every result
+is reproducible by anyone on the team.
+
+**There was no way to know if a check had actually passed or failed** -- every validation check always
+printed "pass," regardless of the real numbers. **Solution:** every check now has a real, numeric pass/fail
+threshold, and the results are visible and auditable.
 
 ---
 
-## Use Cases
+## Key Features & Benefits
 
-- RCM opportunity identification
-- Medicare Advantage market analysis
-- Enrollment growth forecasting
-- Prior authorization exposure prioritization
-- Authorization timing analysis
-- Plan-level intelligence
-- Geographic growth analysis
-- Strategic RCM outreach
+- **Honest enrollment reporting** -- every figure is shown as a range, reflecting real data limitations
+  instead of hiding them.
+- **Proven forecasting** -- the enrollment forecast is validated across 15 independent tests, not a single
+  lucky guess, and clearly beats a simple baseline.
+- **State and county-level market opportunity ranking** -- shows exactly where growth potential is
+  highest, stress-tested against different scoring assumptions so the ranking can be trusted.
+- **Payer scorecard** -- ranks insurance companies by growth, size, and administrative burden, so RCM
+  teams know exactly which payers to prioritize for partnership and outreach.
+- **Prior-authorization exposure view** -- shows where authorization workload is concentrated by plan and
+  by member volume, helping teams plan staffing and capacity.
+- **Revenue estimation** -- converts enrollment growth into a clearly labeled revenue estimate, with a
+  transparent range (low, base, high) rather than a single misleading number.
+- **Built-in validation dashboard** -- every underlying check is visible, with real pass/fail results, so
+  the platform's reliability can be verified at a glance.
+- **One-click, repeatable pipeline** -- the entire analysis can be rerun end-to-end at any time as new
+  data becomes available.
 
 ---
 
-## Project Goal
+## Architecture
 
-The goal of **RCM Opportunity Forecasting & Prior Authorization Intelligence** is to transform public Medicare Advantage data into practical RCM intelligence.
+![Pipeline Architecture](reports/figures/architecture_animated.gif)
 
-> **Enrollment Trends → Forecasting → Prior Authorization Intelligence → Timing Exposure → Growth Opportunities → RCM Decision Support**
+Data flows in one direction, start to finish: public CMS data is loaded and cleaned, growth and
+forecasting analysis run on top of it, prior-authorization and payer data are layered in, and every
+result flows into a single validated dashboard -- so nothing shown to the end user skips the checks along
+the way.
 
+---
 
+## Dashboard
+
+### Executive Overview
+A single-page summary of the most important numbers: current enrollment, growth rate, the best-performing
+forecast model, and the top opportunity markets.
+
+![Executive Overview](docs/assets/screenshots/01_overview.png)
+
+### Enrollment Forecast
+Shows the enrollment trend and compares forecasting models against each other and against a simple
+baseline, so the chosen model's reliability is visible, not assumed.
+
+![Enrollment Forecast](docs/assets/screenshots/02_forecast.png)
+
+### Hierarchical Forecast
+Breaks the national forecast down to the state and county level, clearly marking which regions' forecasts
+are reliable (green) versus directional only (red).
+
+![Hierarchical Forecast](docs/assets/screenshots/03_hierarchical.png)
+
+### Growth Opportunity
+An interactive map and ranking of every state and county by growth opportunity, with the scoring
+methodology stress-tested for stability.
+
+![Growth Opportunity](docs/assets/screenshots/04_growth.png)
+
+### Payer Scorecard
+Ranks insurance payers by growth, member scale, and prior-authorization burden -- the top candidates for
+outreach and partnership.
+
+![Payer Scorecard](docs/assets/screenshots/05_payer.png)
+
+### PA Exposure
+Shows how many health plan members fall into low, medium, and high prior-authorization exposure, weighted
+by actual enrollment, not just plan counts.
+
+![PA Exposure](docs/assets/screenshots/06_pa.png)
+
+### Proxy Revenue
+Converts the enrollment forecast into a clearly labeled revenue estimate range, with the underlying
+assumption stated in plain language.
+
+![Proxy Revenue](docs/assets/screenshots/07_revenue.png)
+
+### Validation
+Every automated check behind this platform, shown with its real result -- full transparency into how the
+numbers were verified.
+
+![Validation](docs/assets/screenshots/08_validation.png)
+
+---
+
+## Conclusion
+
+This platform turns publicly available Medicare Advantage data into a trustworthy, decision-ready
+business intelligence tool for RCM teams. A structured review found and corrected several issues that
+could have led to misleading conclusions -- from hidden data being silently ignored, to an unproven
+forecast, to a market-ranking system that rewarded the wrong markets. Every number shown today is backed
+by a visible, auditable check, and every limitation of the underlying public data is stated openly rather
+than hidden. The result is a platform that RCM and business teams can genuinely rely on to decide where to
+focus growth efforts, which payers to prioritize, and where to plan for administrative workload -- with
+the confidence that comes from knowing exactly how each number was produced and verified.

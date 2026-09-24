@@ -1,6 +1,13 @@
 ﻿from __future__ import annotations
 
 import json
+import sys
+from pathlib import Path
+
+# Streamlit runs this file directly, so the project root (which holds the
+# "src" package) is not automatically on sys.path -- add it here, before
+# any "from src..." import, or Python raises ModuleNotFoundError: 'src'.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import pandas as pd
 import plotly.express as px
