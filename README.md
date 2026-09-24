@@ -34,40 +34,6 @@ platform -- not a spreadsheet full of gaps and guesswork.
 
 ---
 
-## Problems Found and Solutions
-
-A structured review of the original version of this project found several issues that could have led to
-misleading business decisions. Each was identified and corrected:
-
-**Hidden data was silently treated as zero.** Government privacy rules hide roughly half of the raw data
-rows. The original version ignored this, understating real enrollment. **Solution:** every enrollment
-figure is now shown as an honest range (low to high), so no one mistakes a partial count for the full
-picture.
-
-**The forecast's accuracy claim was based on a single lucky test.** A forecast was judged reliable from
-one snapshot in time, which can be misleading. **Solution:** the forecast is now tested 15 separate times
-across different time windows and compared against a simple baseline every time, so its reliability is
-proven, not assumed.
-
-**Two features were accidentally the same thing under different names**, one meant to represent
-authorization delays, which risked confusing users. **Solution:** removed the duplicate and replaced it
-with a properly built, member-weighted exposure score.
-
-**The market-opportunity scoring rewarded the wrong markets** -- it favored places that were already
-saturated instead of places with room to grow. **Solution:** the scoring logic was corrected to reward
-markets with real growth headroom, and the new ranking was stress-tested against alternate scoring
-weights to confirm it holds up.
-
-**The project could not be reliably rebuilt from scratch** -- a key step only existed in someone's personal
-notebook. **Solution:** the entire pipeline now runs end-to-end with a single command, and every result
-is reproducible by anyone on the team.
-
-**There was no way to know if a check had actually passed or failed** -- every validation check always
-printed "pass," regardless of the real numbers. **Solution:** every check now has a real, numeric pass/fail
-threshold, and the results are visible and auditable.
-
----
-
 ## Key Features & Benefits
 
 - **Honest enrollment reporting** -- every figure is shown as a range, reflecting real data limitations
@@ -100,13 +66,25 @@ the way.
 
 ---
 
+## Dashboard
+
+**Executive Overview** -- a single-page summary of the most important numbers: current enrollment,
+growth rate, the best-performing forecast model, and the top opportunity markets.
+
+<img src="docs/assets/screenshots/01_overview.png" width="800">
+
+**Proxy Revenue** -- converts the enrollment forecast into a clearly labeled revenue estimate range,
+with the underlying assumption stated in plain language.
+
+<img src="docs/assets/screenshots/02_proxy_revenue.png" width="800">
+
+---
+
 ## Conclusion
 
 This platform turns publicly available Medicare Advantage data into a trustworthy, decision-ready
-business intelligence tool for RCM teams. A structured review found and corrected several issues that
-could have led to misleading conclusions -- from hidden data being silently ignored, to an unproven
-forecast, to a market-ranking system that rewarded the wrong markets. Every number shown today is backed
-by a visible, auditable check, and every limitation of the underlying public data is stated openly rather
-than hidden. The result is a platform that RCM and business teams can genuinely rely on to decide where to
-focus growth efforts, which payers to prioritize, and where to plan for administrative workload -- with
-the confidence that comes from knowing exactly how each number was produced and verified.
+business intelligence tool for RCM teams. Every number shown is backed by a visible, auditable check, and
+every limitation of the underlying public data is stated openly rather than hidden. The result is a
+platform that RCM and business teams can genuinely rely on to decide where to focus growth efforts, which
+payers to prioritize, and where to plan for administrative workload -- with the confidence that comes from
+knowing exactly how each number was produced and verified.
