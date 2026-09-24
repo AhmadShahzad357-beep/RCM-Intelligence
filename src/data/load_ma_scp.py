@@ -7,6 +7,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.config import MA_SCP_DIR, PROCESSED_DIR, TABLE_DIR, ensure_dirs
+from src.data.suppression import add_bounded_enrollment, bounded_group_summary
 
 
 def month_from_zip_name(path: Path) -> str:
@@ -135,12 +136,23 @@ def create_monthly_tables(ma: pd.DataFrame) -> dict[str, pd.DataFrame]:
 def main() -> None:
     ensure_dirs()
     ma = build_ma_scp_long()
+    ma = add_bounded_enrollment(ma)
     ma.to_parquet(PROCESSED_DIR / "ma_scp_long.parquet", index=False)
     ma.head(1000).to_csv(TABLE_DIR / "ma_scp_long_profile_sample.csv", index=False)
     for name, table in create_monthly_tables(ma).items():
         table.to_parquet(PROCESSED_DIR / f"{name}.parquet", index=False)
         table.to_csv(TABLE_DIR / f"{name}.csv", index=False)
+
+    national_bounds = bounded_group_summary(ma, ["report_month", "report_month_label"])
+    national_bounds.to_csv(TABLE_DIR / "ma_scp_national_bounds.csv", index=False)
+
     print(f"Wrote MA SCP long table with {len(ma):,} rows.")
+    latest = national_bounds.sort_values("report_month").iloc[-1]
+    print(
+        f"Latest month ({latest['report_month_label']}): observed={latest['enrolled_base']:,.0f}, "
+        f"low={latest['enrolled_low']:,.0f}, high={latest['enrolled_high']:,.0f}, "
+        f"suppressed_row_share={latest['suppressed_row_share']:.1%}"
+    )
 
 
 if __name__ == "__main__":
