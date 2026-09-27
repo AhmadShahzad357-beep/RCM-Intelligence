@@ -1,10 +1,4 @@
-﻿# RCM Opportunity Forecasting & Prior Authorization Intelligence
-
-## Aim
-
-To turn public Medicare Advantage enrollment data into clear, actionable business intelligence for
-Revenue Cycle Management (RCM) teams -- showing where enrollment is growing, which insurance payers to
-prioritize, where prior-authorization workload is concentrated, and what that growth is worth in dollars.
+# RCM Opportunity Forecasting & Prior Authorization Intelligence
 
 ---
 
@@ -23,6 +17,14 @@ stated openly rather than hidden behind a confident-looking chart.
 
 ---
 
+## Aim
+
+To turn public Medicare Advantage enrollment data into clear, actionable business intelligence for
+Revenue Cycle Management (RCM) teams -- showing where enrollment is growing, which insurance payers to
+prioritize, where prior-authorization workload is concentrated, and what that growth is worth in dollars.
+
+---
+
 ## Problem Statement
 
 RCM and business development teams need to know where to focus their limited time and resources: which
@@ -34,24 +36,19 @@ platform -- not a spreadsheet full of gaps and guesswork.
 
 ---
 
-## Key Features & Benefits
+## Key Features
 
 - **Honest enrollment reporting** -- every figure is shown as a range, reflecting real data limitations
-  instead of hiding them.
-- **Proven forecasting** -- the enrollment forecast is validated across 15 independent tests, not a single
-  lucky guess, and clearly beats a simple baseline.
-- **State and county-level market opportunity ranking** -- shows exactly where growth potential is
-  highest, stress-tested against different scoring assumptions so the ranking can be trusted.
-- **Payer scorecard** -- ranks insurance companies by growth, size, and administrative burden, so RCM
-  teams know exactly which payers to prioritize for partnership and outreach.
-- **Prior-authorization exposure view** -- shows where authorization workload is concentrated by plan and
-  by member volume, helping teams plan staffing and capacity.
-- **Revenue estimation** -- converts enrollment growth into a clearly labeled revenue estimate, with a
-  transparent range (low, base, high) rather than a single misleading number.
-- **Built-in validation dashboard** -- every underlying check is visible, with real pass/fail results, so
-  the platform's reliability can be verified at a glance.
-- **One-click, repeatable pipeline** -- the entire analysis can be rerun end-to-end at any time as new
-  data becomes available.
+  instead of hiding them
+- **Proven forecasting** -- the enrollment forecast is validated across 15 independent tests and clearly
+  beats a simple baseline
+- **State and county-level market opportunity ranking** -- stress-tested against different scoring
+  assumptions
+- **Payer scorecard** -- ranks insurance companies by growth, size, and administrative burden
+- **Prior-authorization exposure view** -- shows authorization workload by plan and by member volume
+- **Revenue estimation** -- converts enrollment growth into a clearly labeled low / base / high range
+- **Built-in validation dashboard** -- every underlying check is visible, with real pass/fail results
+- **One-click, repeatable pipeline** -- the entire analysis can be rerun end-to-end at any time
 
 ---
 
@@ -77,6 +74,20 @@ growth rate, the best-performing forecast model, and the top opportunity markets
 with the underlying assumption stated in plain language.
 
 <img src="docs/assets/screenshots/02_proxy_revenue.png" width="800">
+
+---
+
+## Benefits
+
+- **Focus where it pays off** -- teams see exactly which states and counties have the most growth
+  potential, and can trust the ranking because it has been stress-tested
+- **Smarter payer outreach** -- RCM teams know which payers to prioritize for partnership and outreach
+- **Better capacity planning** -- knowing where prior-authorization workload is concentrated helps teams
+  plan staffing ahead of time
+- **Numbers you can rely on** -- every figure is backed by a visible check, and data limitations are stated
+  openly instead of hidden
+- **Clear money view** -- revenue is shown as a transparent range, never a single misleading number
+- **Always up to date** -- the whole analysis can be rerun as new public data becomes available
 
 ---
 
