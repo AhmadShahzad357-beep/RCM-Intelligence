@@ -1,5 +1,7 @@
 # RCM Opportunity Forecasting & Prior Authorization Intelligence
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20Dashboard-2ea44f?style=for-the-badge)](https://3tdiatywrqjkvvo59cxifz.streamlit.app)
+
 ---
 
 ## Overview
