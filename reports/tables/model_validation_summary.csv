@@ -1,0 +1,8 @@
+area,check,status,result,decision
+forecasting,rolling_backtest_beats_naive,pass,"linear_drift: mean_mape=0.0045, mean_mase=1.515 vs naive mean_mase=2.215, over 15 splits",Winning model's MASE must be lower than the naive baseline's own MASE on the same multi-step horizon -- a fixed MASE<1.0 threshold is only valid for one-step forecasts and was corrected here.
+prior_auth,cpsc_member_match_rate,pass,"match_rate=99.9%, high_exposure_member_share=1.1%",Member-weighted exposure numbers require >=90% of scored plans matched to CPSC enrollment.
+prior_auth,cms_pbp_prior_auth_exposure,pass,"plans_reviewed=8083, plans_with_prior_auth_required=6889","Public CMS data lacks request-level labels; frame as exposure prioritization, not denial prediction."
+growth_opportunity,weights_sum_to_one,pass,growth_rate_rank=0.45; enrollment_scale_rank=0.30; headroom_rank=0.25,"Use score as a transparent CMS-signal ranking, not a dollar revenue estimate."
+growth_opportunity,top10_stability_under_alt_weights,pass,min_top10_overlap=70% across alternate weight schemes,Ranking should not collapse under reasonable alternate weightings (threshold: >=50% top-10 overlap).
+data_quality,suppression_share_within_expected_range,pass,"latest=2026-05: suppressed_row_share=53.5%, low=36,083,281, high=36,196,101","Report enrollment as a [low, high] range, not a single observed-only sum, given suppression share."
+hierarchical_forecast,reconciliation_ratio_reasonable,pass,"ratio=1.0000, pct_states_beating_naive=69.6%, pct_top_counties_beating_naive=84.0%",A reconciliation ratio far from 1.0 would mean state-level and national models disagree sharply; report per-state/county reliability rather than treating the whole hierarchy as equally trustworthy.

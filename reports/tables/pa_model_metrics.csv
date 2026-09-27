@@ -1,0 +1,2 @@
+engine,source,plans_reviewed,plans_with_prior_auth_required,high_exposure_plans,label_status,model_status
+cms_pbp_prior_auth_exposure,CMS 2026 PBP benefit JSON priorAuthorizationAndReferral fields,8083,6889,126,No request-level approval/denial labels in public CMS files,"Rule-based CMS feature extraction, not supervised denial prediction"

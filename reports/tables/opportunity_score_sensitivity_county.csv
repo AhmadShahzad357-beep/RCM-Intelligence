@@ -1,0 +1,3 @@
+scheme,weights,top10_overlap_with_headline,top10_overlap_pct
+alt_1,"{'growth_rate_rank': 0.6, 'enrollment_scale_rank': 0.2, 'headroom_rank': 0.2}",6,0.6
+alt_2,"{'growth_rate_rank': 0.3, 'enrollment_scale_rank': 0.3, 'headroom_rank': 0.4}",8,0.8

@@ -1,0 +1,18 @@
+plan_type,risk_bucket,plans,members
+1876 Cost,low,45,201851.0
+Employer/Union Only Direct Contract PDP,low,2,123008.0
+HMO,high,104,757342.0
+HMO,low,1398,8955906.0
+HMO,medium,1554,7662986.0
+HMOPOS,high,18,132827.0
+HMOPOS,low,363,3108560.0
+HMOPOS,medium,921,8738129.0
+Local PPO,high,4,27035.0
+Local PPO,low,1036,10998629.0
+Local PPO,medium,1462,14464989.0
+MSA,low,19,284988.0
+Medicare Prescription Drug Plan,low,659,29631737.0
+National PACE,low,398,84528.0
+PFFS,low,26,105211.0
+Regional PPO,low,1,944.0
+Regional PPO,medium,73,177839.0

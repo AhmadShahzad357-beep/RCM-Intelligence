@@ -1,0 +1,4 @@
+component,weight,source
+growth_rate_rank,0.45,CMS MA SCP first-to-last observed enrollment growth (balanced panel)
+enrollment_scale_rank,0.3,CMS MA SCP latest observed enrollment
+headroom_rank,0.25,1 - CMS MA state/county penetration (low penetration = more headroom)
